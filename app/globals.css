@@ -711,6 +711,18 @@ tr.total td {
   max-width: 66ch;
 }
 
+/* stack two-column marketing rows on narrow screens (incl. Wix iframe) */
+@media (max-width: 820px) {
+  main .wrap > div[style*="grid-template-columns"],
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+  h2.section,
+  .statement {
+    max-width: none;
+  }
+}
+
 /* entrance reveal */
 @media (prefers-reduced-motion: no-preference) {
   .reveal {

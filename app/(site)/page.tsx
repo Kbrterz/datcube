@@ -5,14 +5,14 @@ export default function Home() {
   return (
     <>
       {/* hero */}
-      <section className="band" style={{ paddingBottom: "clamp(40px,6vw,64px)" }}>
+      <section style={{ padding: "clamp(36px,5vw,56px) 0 clamp(44px,6vw,68px)" }}>
         <div className="wrap">
           <div
             style={{
               display: "grid",
               gap: "clamp(32px,5vw,64px)",
               gridTemplateColumns: "minmax(0,1.05fr) minmax(0,0.95fr)",
-              alignItems: "center",
+              alignItems: "start",
             }}
             className="hero-grid"
           >
