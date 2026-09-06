@@ -40,7 +40,7 @@ function summarize(cols: string[], rows: any[][]): string {
     return rows[0].map((v, i) => `${cols[i]}: ${formatVal(v)}`).join(" · ");
   }
   const first = rows[0];
-  return `${rows.length} rows returned. Top row — ${first
+  return `${rows.length} rows returned. Top row: ${first
     .map((v, i) => `${cols[i]}: ${formatVal(v)}`)
     .join(", ")}.`;
 }
@@ -103,7 +103,7 @@ function ChartBlock({ cols, rows }: { cols: string[]; rows: any[][] }) {
     return (
       <div style={{ marginTop: 12 }}>
         <div className="panel-title">{chart.label}</div>
-        <div style={{ fontFamily: "Bricolage Grotesque, sans-serif", fontSize: "2rem", fontWeight: 700 }}>
+        <div style={{ fontFamily: "Newsreader, serif", fontSize: "2rem", fontWeight: 700 }}>
           {formatVal(chart.value)}
         </div>
       </div>
@@ -114,23 +114,23 @@ function ChartBlock({ cols, rows }: { cols: string[]; rows: any[][] }) {
       <ResponsiveContainer width="100%" height="100%">
         {chart.kind === "line" ? (
           <LineChart data={chart.data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#263837" />
-            <XAxis dataKey="label" stroke="#6a807e" fontSize={11} />
-            <YAxis stroke="#6a807e" fontSize={11} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e2d9c9" />
+            <XAxis dataKey="label" stroke="#8b8175" fontSize={11} />
+            <YAxis stroke="#8b8175" fontSize={11} />
             <Tooltip
-              contentStyle={{ background: "#1a2b29", border: "1px solid #263837", color: "#eef4f3" }}
+              contentStyle={{ background: "#fffdf9", border: "1px solid #e2d9c9", color: "#221d17" }}
             />
-            <Line type="monotone" dataKey="value" stroke="#2ed3c6" strokeWidth={2} dot={false} />
+            <Line type="monotone" dataKey="value" stroke="#bc4b2b" strokeWidth={2} dot={false} />
           </LineChart>
         ) : (
           <BarChart data={chart.data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#263837" />
-            <XAxis dataKey="label" stroke="#6a807e" fontSize={11} />
-            <YAxis stroke="#6a807e" fontSize={11} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e2d9c9" />
+            <XAxis dataKey="label" stroke="#8b8175" fontSize={11} />
+            <YAxis stroke="#8b8175" fontSize={11} />
             <Tooltip
-              contentStyle={{ background: "#1a2b29", border: "1px solid #263837", color: "#eef4f3" }}
+              contentStyle={{ background: "#fffdf9", border: "1px solid #e2d9c9", color: "#221d17" }}
             />
-            <Bar dataKey="value" fill="#2ed3c6" radius={[3, 3, 0, 0]} />
+            <Bar dataKey="value" fill="#bc4b2b" radius={[3, 3, 0, 0]} />
           </BarChart>
         )}
       </ResponsiveContainer>
@@ -284,7 +284,7 @@ export default function AppPage() {
 
   function runSql(sql: string, label: string) {
     if (!db) {
-      setErrorMsg("The query engine is still loading — try again in a second.");
+      setErrorMsg("The query engine is still loading. Try again in a second.");
       return;
     }
     try {
@@ -314,7 +314,7 @@ export default function AppPage() {
       const data = await resp.json();
       if (data.fallback) {
         setTab("builder");
-        setErrorMsg("No AI key is configured on this deployment — use the query builder below instead.");
+        setErrorMsg("No AI key is configured on this deployment. Use the query builder below instead.");
       } else if (data.error) {
         setErrorMsg(data.error);
       } else if (data.sql) {
@@ -368,25 +368,28 @@ export default function AppPage() {
   return (
     <>
       <nav className="nav">
-        <div className="container nav-inner">
+        <div className="wrap nav-in">
           <Link href="/" className="brand">
-            Dat<span>Cube</span>
+            Dat<em>Cube</em>
           </Link>
           <div className="nav-links">
-            <span className="pill">{datasetLabel}</span>
+            <Link href="/product">Product</Link>
+            <Link href="/value">Time &amp; money</Link>
+            <Link href="/pricing">Pricing</Link>
           </div>
+          <span className="pill" style={{ marginLeft: "auto" }}>{datasetLabel}</span>
         </div>
       </nav>
 
-      <div className="container app-grid" style={{ padding: "32px 24px 80px" }}>
+      <div className="wrap app-grid" style={{ padding: "32px 0 80px" }}>
         {/* left column: data + ask/builder */}
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <div className="card">
             <div className="panel-title">Data</div>
-            <button className="btn ghost" onClick={loadSample} style={{ width: "100%", marginBottom: 8 }}>
+            <button className="demo-btn ghost" onClick={loadSample} style={{ width: "100%", marginBottom: 8 }}>
               Load sample data
             </button>
-            <label className="btn ghost" style={{ width: "100%", justifyContent: "center", cursor: "pointer" }}>
+            <label className="demo-btn ghost" style={{ width: "100%", justifyContent: "center", cursor: "pointer" }}>
               Upload a CSV
               <input type="file" accept=".csv" onChange={handleFile} style={{ display: "none" }} />
             </label>
@@ -402,11 +405,11 @@ export default function AppPage() {
 
           <div className="card">
             <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-              <button className={tab === "ask" ? "btn" : "btn ghost"} onClick={() => setTab("ask")} style={{ flex: 1 }}>
+              <button className={tab === "ask" ? "demo-btn" : "demo-btn ghost"} onClick={() => setTab("ask")} style={{ flex: 1 }}>
                 Ask
               </button>
               <button
-                className={tab === "builder" ? "btn" : "btn ghost"}
+                className={tab === "builder" ? "demo-btn" : "demo-btn ghost"}
                 onClick={() => setTab("builder")}
                 style={{ flex: 1 }}
               >
@@ -430,7 +433,7 @@ export default function AppPage() {
                   ))}
                 </div>
                 <button
-                  className="btn"
+                  className="demo-btn"
                   style={{ width: "100%", marginTop: 12 }}
                   onClick={handleAsk}
                   disabled={loading || !engineReady}
@@ -469,7 +472,7 @@ export default function AppPage() {
                 <label className="panel-title">Filter (optional)</label>
                 <div style={{ display: "flex", gap: 6 }}>
                   <select value={bFilterCol} onChange={(e) => setBFilterCol(e.target.value)} style={{ flex: 2 }}>
-                    <option value="">— none —</option>
+                    <option value="">(none)</option>
                     {columns.map((c) => (
                       <option key={c.name} value={c.name}>
                         {c.name}
@@ -491,13 +494,13 @@ export default function AppPage() {
                   onChange={(e) => setBFilterVal(e.target.value)}
                   disabled={!bFilterCol}
                 />
-                <button className="btn" style={{ marginTop: 8 }} onClick={runBuilder} disabled={!engineReady}>
+                <button className="demo-btn" style={{ marginTop: 8 }} onClick={runBuilder} disabled={!engineReady}>
                   {engineReady ? "Run" : "Loading engine…"}
                 </button>
               </div>
             )}
 
-            {errorMsg && <p style={{ color: "var(--coral)", fontSize: "0.85rem", marginTop: 10 }}>{errorMsg}</p>}
+            {errorMsg && <p style={{ color: "var(--accent-deep)", fontSize: "0.85rem", marginTop: 10 }}>{errorMsg}</p>}
           </div>
         </div>
 
@@ -538,15 +541,15 @@ export default function AppPage() {
                     </tbody>
                   </table>
                   {result.rows.length > 20 && (
-                    <p className="hint">Showing first 20 of {result.rows.length} rows — download for the full set.</p>
+                    <p className="hint">Showing first 20 of {result.rows.length} rows. Download for the full set.</p>
                   )}
                 </div>
                 <div className="row-actions">
-                  <button className="btn ghost" onClick={pin}>
+                  <button className="demo-btn ghost" onClick={pin}>
                     Pin to dashboard
                   </button>
                   <button
-                    className="btn ghost"
+                    className="demo-btn ghost"
                     onClick={() => downloadCsv("datcube-result.csv", result.columns, result.rows)}
                   >
                     Download CSV
@@ -562,7 +565,7 @@ export default function AppPage() {
                 Dashboard ({pinned.length})
               </div>
               <button
-                className="btn ghost"
+                className="demo-btn ghost"
                 style={{ marginLeft: "auto" }}
                 onClick={handleShare}
                 disabled={pinned.length === 0}
@@ -575,13 +578,13 @@ export default function AppPage() {
               <>
                 <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
                   <input type="text" readOnly value={shareUrl} onFocus={(e) => e.target.select()} />
-                  <button className="btn ghost" onClick={() => navigator.clipboard?.writeText(shareUrl)}>
+                  <button className="demo-btn ghost" onClick={() => navigator.clipboard?.writeText(shareUrl)}>
                     Copy
                   </button>
                 </div>
                 <p className="hint">
                   {usingSample
-                    ? "This link reproduces the board for anyone — it re-loads the sample data on open."
+                    ? "This link reproduces the board for anyone. It re-loads the sample data on open."
                     : "Heads up: your uploaded CSV isn't in this link (too large). Whoever opens it will need to upload the same file to see these cards."}
                 </p>
               </>
@@ -604,7 +607,7 @@ export default function AppPage() {
             <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid var(--line)" }}>
               <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: "0.9rem" }}>
                 <input type="checkbox" checked={digestOn} onChange={toggleDigest} />
-                Email me this board weekly <span className="stub">(demo — no email is sent)</span>
+                Email me this board weekly <span className="stub">(demo, no email is sent)</span>
               </label>
               {digestOn && <p className="hint">Next send: {nextSend}</p>}
             </div>
@@ -629,15 +632,15 @@ function PinnedCard({ item, db, onRemove }: { item: PinnedItem; db: any; onRemov
     }
   }
   return (
-    <div className="card" style={{ background: "var(--surface-2)" }}>
+    <div className="card" style={{ background: "var(--paper-2)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
         <p style={{ fontSize: "0.88rem", fontWeight: 600 }}>{item.question}</p>
-        <button className="btn ghost" style={{ padding: "2px 8px", fontSize: "0.7rem" }} onClick={onRemove}>
+        <button className="demo-btn ghost" style={{ padding: "2px 8px", fontSize: "0.7rem" }} onClick={onRemove}>
           ✕
         </button>
       </div>
       {!db && <p className="hint">Loading…</p>}
-      {error && <p style={{ color: "var(--coral)", fontSize: "0.78rem" }}>{error}</p>}
+      {error && <p style={{ color: "var(--accent-deep)", fontSize: "0.78rem" }}>{error}</p>}
       {!error && db && <ChartBlock cols={cols} rows={outRows} />}
     </div>
   );
