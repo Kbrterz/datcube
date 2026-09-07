@@ -90,7 +90,11 @@ strong {
 }
 
 .band {
-  padding: clamp(56px, 9vw, 104px) 0;
+  padding: clamp(44px, 6vw, 74px) 0;
+}
+/* two plain (paper) bands in a row: don't double the gap */
+.band:not(.band--paper2):not(.band--ink) + .band:not(.band--paper2):not(.band--ink) {
+  padding-top: 0;
 }
 
 .band--paper2 {
@@ -485,11 +489,12 @@ tr.total td {
 }
 
 .ba-fill.before {
-  background: var(--ink-faint);
+  background: #8a7c68;
 }
 
 .ba-fill.after {
   background: var(--accent);
+  min-width: 96px;
 }
 
 /* live demo strip on home */

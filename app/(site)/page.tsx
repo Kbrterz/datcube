@@ -106,10 +106,12 @@ export default function Home() {
             <div className="ba-row">
               <span className="lab">with DatCube</span>
               <div className="ba-track">
-                <div className="ba-fill after" style={{ width: "9%" }} />
+                <div className="ba-fill after" style={{ width: "9%" }}>
+                  ~30 min
+                </div>
               </div>
             </div>
-            <p className="hint">About 30 minutes: one board, scheduled to send itself.</p>
+            <p className="hint">One board, scheduled to send itself.</p>
 
             <p className="mono" style={{ fontSize: "0.72rem", color: "var(--ink-faint)", marginTop: 18 }}>
               ANSWERING A NEW QUESTION
@@ -125,10 +127,12 @@ export default function Home() {
             <div className="ba-row">
               <span className="lab">with DatCube</span>
               <div className="ba-track">
-                <div className="ba-fill after" style={{ width: "4%" }} />
+                <div className="ba-fill after" style={{ width: "4%" }}>
+                  seconds
+                </div>
               </div>
             </div>
-            <p className="hint">Seconds: ask in plain language, read the chart.</p>
+            <p className="hint">Ask in plain language, read the chart.</p>
           </div>
         </div>
       </section>
