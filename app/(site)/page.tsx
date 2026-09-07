@@ -5,8 +5,17 @@ import { WeekDonut, HoursReclaimed } from "../_components/Charts";
 export default function Home() {
   return (
     <>
+      {/* masthead */}
+      <section style={{ padding: "clamp(28px,4vw,44px) 0 0" }}>
+        <div className="wrap">
+          <h1 className="masthead">
+            Dat<em>Cube</em>
+          </h1>
+        </div>
+      </section>
+
       {/* hero */}
-      <section style={{ padding: "clamp(36px,5vw,56px) 0 clamp(44px,6vw,68px)", position: "relative" }}>
+      <section style={{ padding: "clamp(20px,3vw,36px) 0 clamp(44px,6vw,68px)", position: "relative" }}>
         <div className="wrap">
           <div
             className="hero-grid"
@@ -19,11 +28,11 @@ export default function Home() {
           >
             <div>
               <p className="eyebrow">No-code analytics</p>
-              <h1 className="display" style={{ fontSize: "clamp(2.9rem,6.6vw,5rem)", lineHeight: 1.02 }}>
+              <h2 className="display" style={{ fontSize: "clamp(2.6rem,5.6vw,4.2rem)", lineHeight: 1.03 }}>
                 Get the hours back.
                 <br />
                 <span style={{ color: "var(--accent)" }}>Defer</span> the hire.
-              </h1>
+              </h2>
               <p className="lede" style={{ marginTop: 22 }}>
                 Your team loses about six hours a week stitching reports together by hand, and the fix
                 everyone reaches for is hiring an analyst. DatCube is the cheaper answer: connect a
@@ -135,9 +144,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* photo break */}
-      <section className="band band--paper2" style={{ paddingTop: 0, paddingBottom: 0 }}>
-        <div className="wrap" style={{ padding: "clamp(28px,4vw,44px) 0" }}>
+      {/* brand band — the name, big */}
+      <section className="brandband">
+        <div className="wrap">
+          <p className="giant">
+            Dat<em>Cube</em>
+          </p>
+          <p className="tag">No-code analytics · time and money, back on your side</p>
+        </div>
+        <div className="wrap" style={{ marginTop: 28 }}>
           <div className="photo" style={{ aspectRatio: "16 / 5" }}>
             <img
               src="https://picsum.photos/seed/datcube-desk/1600/500"

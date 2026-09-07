@@ -284,8 +284,50 @@ h2.section {
 .brand {
   font-family: "Newsreader", serif;
   font-weight: 600;
-  font-size: 1.32rem;
+  font-size: 1.55rem;
   letter-spacing: -0.02em;
+}
+
+/* oversized brand wordmark — DatCube is the name of the whole thing */
+.masthead {
+  font-family: "Newsreader", serif;
+  font-weight: 600;
+  font-size: clamp(4rem, 15vw, 12rem);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  color: var(--ink);
+  margin: 0;
+}
+.masthead em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.brandband {
+  background: var(--ink);
+  color: #fff;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 56px) 0;
+}
+.brandband .giant {
+  font-family: "Newsreader", serif;
+  font-weight: 600;
+  font-size: clamp(3.4rem, 13vw, 11rem);
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+  margin: 0;
+}
+.brandband .giant em {
+  font-style: italic;
+  color: #6ea8e0;
+}
+.brandband .tag {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9fb4c9;
+  margin-top: 14px;
 }
 
 .brand em {
