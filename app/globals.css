@@ -288,13 +288,13 @@ h2.section {
   letter-spacing: -0.02em;
 }
 
-/* oversized brand wordmark — DatCube is the name of the whole thing */
+/* brand wordmark — present, not shouting */
 .masthead {
   font-family: "Newsreader", serif;
   font-weight: 600;
-  font-size: clamp(4rem, 15vw, 12rem);
-  line-height: 0.9;
-  letter-spacing: -0.055em;
+  font-size: clamp(2.4rem, 5vw, 3.7rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
   color: var(--ink);
   margin: 0;
 }
@@ -312,9 +312,9 @@ h2.section {
 .brandband .giant {
   font-family: "Newsreader", serif;
   font-weight: 600;
-  font-size: clamp(3.4rem, 13vw, 11rem);
-  line-height: 0.86;
-  letter-spacing: -0.055em;
+  font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
   margin: 0;
 }
 .brandband .giant em {
