@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BoardMock, TrendAnalysis, ScatterDiagram } from "../../_components/Charts";
 
 export const metadata: Metadata = {
   title: "Product",
@@ -74,6 +75,43 @@ export default function ProductPage() {
                 uploaded.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* what the analysis looks like */}
+      <section className="band band--gold-top">
+        <div className="wrap">
+          <p className="eyebrow">The kind of analysis you get</p>
+          <h2 className="section">Not just totals. Trends, relationships, and a read on the odds.</h2>
+          <p className="lede" style={{ marginTop: 14 }}>
+            Every chart below is built from a dataset, the same way the tool builds yours.
+          </p>
+          <div style={{ display: "grid", gap: 18, gridTemplateColumns: "repeat(2, minmax(0, 1fr))", marginTop: 30 }}>
+            <TrendAnalysis />
+            <ScatterDiagram />
+          </div>
+        </div>
+      </section>
+
+      {/* a real board */}
+      <section className="band band--blue">
+        <div className="wrap">
+          <div style={{ display: "grid", gap: "clamp(28px,4vw,52px)", gridTemplateColumns: "minmax(0,0.9fr) minmax(0,1.1fr)", alignItems: "center" }}>
+            <div>
+              <p className="eyebrow">A shared board</p>
+              <h2 className="section" style={{ color: "#fff", maxWidth: "16ch" }}>
+                Four questions, one link, always live
+              </h2>
+              <p className="lede">
+                Pin the answers people ask for every week. The link rebuilds the board for whoever
+                opens it, so there is one number, not five.
+              </p>
+              <div style={{ marginTop: 22 }}>
+                <Link href="/app" className="btn">Build one now</Link>
+              </div>
+            </div>
+            <BoardMock />
           </div>
         </div>
       </section>

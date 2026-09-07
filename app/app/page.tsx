@@ -114,23 +114,23 @@ function ChartBlock({ cols, rows }: { cols: string[]; rows: any[][] }) {
       <ResponsiveContainer width="100%" height="100%">
         {chart.kind === "line" ? (
           <LineChart data={chart.data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e2d9c9" />
-            <XAxis dataKey="label" stroke="#8b8175" fontSize={11} />
-            <YAxis stroke="#8b8175" fontSize={11} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e2e7ec" />
+            <XAxis dataKey="label" stroke="#7d8894" fontSize={11} />
+            <YAxis stroke="#7d8894" fontSize={11} />
             <Tooltip
-              contentStyle={{ background: "#fffdf9", border: "1px solid #e2d9c9", color: "#221d17" }}
+              contentStyle={{ background: "#ffffff", border: "1px solid #e2e7ec", color: "#12233a" }}
             />
-            <Line type="monotone" dataKey="value" stroke="#bc4b2b" strokeWidth={2} dot={false} />
+            <Line type="monotone" dataKey="value" stroke="#1c5faa" strokeWidth={2} dot={false} />
           </LineChart>
         ) : (
           <BarChart data={chart.data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e2d9c9" />
-            <XAxis dataKey="label" stroke="#8b8175" fontSize={11} />
-            <YAxis stroke="#8b8175" fontSize={11} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e2e7ec" />
+            <XAxis dataKey="label" stroke="#7d8894" fontSize={11} />
+            <YAxis stroke="#7d8894" fontSize={11} />
             <Tooltip
-              contentStyle={{ background: "#fffdf9", border: "1px solid #e2d9c9", color: "#221d17" }}
+              contentStyle={{ background: "#ffffff", border: "1px solid #e2e7ec", color: "#12233a" }}
             />
-            <Bar dataKey="value" fill="#bc4b2b" radius={[3, 3, 0, 0]} />
+            <Bar dataKey="value" fill="#1c5faa" radius={[3, 3, 0, 0]} />
           </BarChart>
         )}
       </ResponsiveContainer>

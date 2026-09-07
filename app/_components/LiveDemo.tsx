@@ -73,18 +73,18 @@ export function LiveDemo() {
       <div style={{ height: 210 }}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={s.data} margin={{ top: 6, right: 4, bottom: 0, left: -18 }}>
-            <CartesianGrid strokeDasharray="2 4" stroke="#e2d9c9" vertical={false} />
+            <CartesianGrid strokeDasharray="2 4" stroke="#e2e7ec" vertical={false} />
             <XAxis
               dataKey="label"
-              stroke="#8b8175"
+              stroke="#7d8894"
               fontSize={11}
               tickLine={false}
-              axisLine={{ stroke: "#e2d9c9" }}
+              axisLine={{ stroke: "#e2e7ec" }}
             />
-            <YAxis stroke="#8b8175" fontSize={11} tickLine={false} axisLine={false} width={38} />
+            <YAxis stroke="#7d8894" fontSize={11} tickLine={false} axisLine={false} width={38} />
             <Bar dataKey="value" radius={[4, 4, 0, 0]} isAnimationActive>
               {s.data.map((_, idx) => (
-                <Cell key={idx} fill={idx === s.highlight ? "#bc4b2b" : "#e6d3bf"} />
+                <Cell key={idx} fill={idx === s.highlight ? "#1c5faa" : "#dfe4ea"} />
               ))}
             </Bar>
           </BarChart>
@@ -102,7 +102,7 @@ export function LiveDemo() {
               borderRadius: 2,
               border: 0,
               cursor: "pointer",
-              background: idx === i ? "#bc4b2b" : "#e2d9c9",
+              background: idx === i ? "#1c5faa" : "#e2e7ec",
               padding: 0,
             }}
           />

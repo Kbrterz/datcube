@@ -1,27 +1,28 @@
 import Link from "next/link";
 import { LiveDemo } from "../_components/LiveDemo";
+import { WeekDonut, HoursReclaimed } from "../_components/Charts";
 
 export default function Home() {
   return (
     <>
       {/* hero */}
-      <section style={{ padding: "clamp(36px,5vw,56px) 0 clamp(44px,6vw,68px)" }}>
+      <section style={{ padding: "clamp(36px,5vw,56px) 0 clamp(44px,6vw,68px)", position: "relative" }}>
         <div className="wrap">
           <div
+            className="hero-grid"
             style={{
               display: "grid",
               gap: "clamp(32px,5vw,64px)",
-              gridTemplateColumns: "minmax(0,1.05fr) minmax(0,0.95fr)",
+              gridTemplateColumns: "minmax(0,1.02fr) minmax(0,0.98fr)",
               alignItems: "start",
             }}
-            className="hero-grid"
           >
             <div>
               <p className="eyebrow">No-code analytics</p>
-              <h1 className="display">
+              <h1 className="display" style={{ fontSize: "clamp(2.9rem,6.6vw,5rem)", lineHeight: 1.02 }}>
                 Get the hours back.
                 <br />
-                Defer the hire.
+                <span style={{ color: "var(--accent)" }}>Defer</span> the hire.
               </h1>
               <p className="lede" style={{ marginTop: 22 }}>
                 Your team loses about six hours a week stitching reports together by hand, and the fix
@@ -40,105 +41,115 @@ export default function Home() {
                 15 minute setup · no account · nothing leaves your browser
               </p>
             </div>
-            <LiveDemo />
+            <div
+              style={{
+                background: "var(--accent-wash)",
+                border: "1px solid var(--line)",
+                borderRadius: 18,
+                padding: 16,
+                borderTop: "4px solid var(--ochre)",
+              }}
+            >
+              <LiveDemo />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* by the numbers */}
-      <section className="band band--paper2">
+      {/* by the numbers — saturated blue band */}
+      <section className="band band--blue">
         <div className="wrap">
-          <p className="eyebrow">What a typical customer gets back</p>
-          <h2 className="section">Measured in the two things you are short on</h2>
-          <div className="figures">
-            <div className="figure">
-              <div className="big accent">5.5 hrs</div>
-              <div className="cap">per person, per week, back from manual reporting</div>
+          <div style={{ display: "grid", gap: "clamp(28px,4vw,52px)", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,0.9fr)", alignItems: "center" }}>
+            <div>
+              <p className="eyebrow">What a typical customer gets back</p>
+              <h2 className="section" style={{ color: "#fff", maxWidth: "20ch" }}>
+                Measured in the two things you are short on
+              </h2>
+              <div className="figures" style={{ marginTop: 32 }}>
+                <div className="figure">
+                  <div className="big">5.5 hrs</div>
+                  <div className="cap" style={{ color: "#dbe8f6" }}>per person, per week, back from manual reporting</div>
+                </div>
+                <div className="figure">
+                  <div className="big">$24,800</div>
+                  <div className="cap" style={{ color: "#dbe8f6" }}>measurable value a year for a 60-person team, versus a $2,388 plan</div>
+                </div>
+                <div className="figure">
+                  <div className="big">6 wks</div>
+                  <div className="cap" style={{ color: "#dbe8f6" }}>until the tool has paid for the year</div>
+                </div>
+                <div className="figure">
+                  <div className="big">1 hire</div>
+                  <div className="cap" style={{ color: "#dbe8f6" }}>the analyst you can put off, or skip</div>
+                </div>
+              </div>
             </div>
-            <div className="figure">
-              <div className="big money">$24,800</div>
-              <div className="cap">measurable value a year for a 60-person team, versus a $2,388 plan</div>
-            </div>
-            <div className="figure">
-              <div className="big">6 weeks</div>
-              <div className="cap">until the tool has paid for the year, at typical loaded rates</div>
-            </div>
-            <div className="figure">
-              <div className="big">1 hire</div>
-              <div className="cap">the data analyst you can put off, or skip, while the team stays self-serve</div>
-            </div>
+            <WeekDonut />
           </div>
-          <p className="hint" style={{ marginTop: 22 }}>
-            Figures are worked from stated assumptions on the{" "}
-            <Link href="/value" style={{ color: "var(--accent-deep)", textDecoration: "underline" }}>
-              Time &amp; money
-            </Link>{" "}
-            page, not a benchmark study.
+          <p className="mono" style={{ fontSize: "0.74rem", color: "#bcd6f0", marginTop: 22 }}>
+            Worked from stated assumptions on the Time &amp; money page, not a benchmark study.
           </p>
         </div>
       </section>
 
-      {/* before / after */}
-      <section className="band">
-        <div className="wrap" style={{ display: "grid", gap: "clamp(28px,5vw,56px)", gridTemplateColumns: "minmax(0,1fr) minmax(0,1.2fr)", alignItems: "center" }} >
-          <div>
-            <p className="eyebrow">The week, before and after</p>
-            <h2 className="section" style={{ maxWidth: "16ch" }}>
-              Same questions. A fraction of the time.
-            </h2>
-            <p className="lede" style={{ marginTop: 16 }}>
-              The point is not more dashboards. It is getting the answer before the meeting, without a
-              ticket and a two-day wait.
-            </p>
+      {/* before / after + reclaimed hours chart */}
+      <section className="band band--gold-top">
+        <div className="wrap">
+          <div style={{ display: "grid", gap: "clamp(28px,4vw,52px)", gridTemplateColumns: "minmax(0,1fr) minmax(0,1.15fr)", alignItems: "center" }}>
+            <div>
+              <p className="eyebrow">The week, before and after</p>
+              <h2 className="section" style={{ maxWidth: "16ch" }}>
+                Same questions. A fraction of the time.
+              </h2>
+              <div className="ba">
+                <p className="mono" style={{ fontSize: "0.72rem", color: "var(--ink-faint)" }}>WEEKLY REPORT PREP</p>
+                <div className="ba-row">
+                  <span className="lab">before</span>
+                  <div className="ba-track">
+                    <div className="ba-fill before" style={{ width: "100%" }}>~6 hrs, four tools, by hand</div>
+                  </div>
+                </div>
+                <div className="ba-row">
+                  <span className="lab">with DatCube</span>
+                  <div className="ba-track">
+                    <div className="ba-fill after" style={{ width: "9%" }}>~30 min</div>
+                  </div>
+                </div>
+                <p className="mono" style={{ fontSize: "0.72rem", color: "var(--ink-faint)", marginTop: 16 }}>ANSWERING A NEW QUESTION</p>
+                <div className="ba-row">
+                  <span className="lab">before</span>
+                  <div className="ba-track">
+                    <div className="ba-fill before" style={{ width: "100%" }}>2 to 3 days, via the data team</div>
+                  </div>
+                </div>
+                <div className="ba-row">
+                  <span className="lab">with DatCube</span>
+                  <div className="ba-track">
+                    <div className="ba-fill after" style={{ width: "4%" }}>seconds</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <HoursReclaimed />
           </div>
-          <div className="ba">
-            <p className="mono" style={{ fontSize: "0.72rem", color: "var(--ink-faint)" }}>
-              WEEKLY REPORT PREP
-            </p>
-            <div className="ba-row">
-              <span className="lab">before</span>
-              <div className="ba-track">
-                <div className="ba-fill before" style={{ width: "100%" }}>
-                  ~6 hrs, four tools, by hand
-                </div>
-              </div>
-            </div>
-            <div className="ba-row">
-              <span className="lab">with DatCube</span>
-              <div className="ba-track">
-                <div className="ba-fill after" style={{ width: "9%" }}>
-                  ~30 min
-                </div>
-              </div>
-            </div>
-            <p className="hint">One board, scheduled to send itself.</p>
+        </div>
+      </section>
 
-            <p className="mono" style={{ fontSize: "0.72rem", color: "var(--ink-faint)", marginTop: 18 }}>
-              ANSWERING A NEW QUESTION
-            </p>
-            <div className="ba-row">
-              <span className="lab">before</span>
-              <div className="ba-track">
-                <div className="ba-fill before" style={{ width: "100%" }}>
-                  2 to 3 days, via the data team
-                </div>
-              </div>
-            </div>
-            <div className="ba-row">
-              <span className="lab">with DatCube</span>
-              <div className="ba-track">
-                <div className="ba-fill after" style={{ width: "4%" }}>
-                  seconds
-                </div>
-              </div>
-            </div>
-            <p className="hint">Ask in plain language, read the chart.</p>
+      {/* photo break */}
+      <section className="band band--paper2" style={{ paddingTop: 0, paddingBottom: 0 }}>
+        <div className="wrap" style={{ padding: "clamp(28px,4vw,44px) 0" }}>
+          <div className="photo" style={{ aspectRatio: "16 / 5" }}>
+            <img
+              src="https://picsum.photos/seed/datcube-desk/1600/500"
+              alt="A team looking at data together"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
 
       {/* what it does */}
-      <section className="band band--paper2">
+      <section className="band">
         <div className="wrap">
           <p className="eyebrow">What it does</p>
           <h2 className="section">Three moves, no setup project</h2>
@@ -160,9 +171,7 @@ export default function Home() {
             </div>
           </div>
           <div style={{ marginTop: 26 }}>
-            <Link href="/product" className="btn btn--ghost">
-              See every feature
-            </Link>
+            <Link href="/product" className="btn btn--ghost">See every feature</Link>
           </div>
         </div>
       </section>
@@ -180,9 +189,7 @@ export default function Home() {
               &ldquo;why&rdquo; questions get answered the same day.
             </p>
             <div style={{ marginTop: 22 }}>
-              <Link href="/pricing" className="btn">
-                See pricing
-              </Link>
+              <Link href="/pricing" className="btn">See pricing</Link>
             </div>
           </div>
         </div>
@@ -194,13 +201,9 @@ export default function Home() {
           <h2 className="section" style={{ margin: "0 auto", maxWidth: "20ch" }}>
             Open the tool and run a real query in a minute
           </h2>
-          <p className="lede" style={{ margin: "14px auto 0" }}>
-            Sample data is already loaded. Ask it something.
-          </p>
+          <p className="lede" style={{ margin: "14px auto 0" }}>Sample data is already loaded. Ask it something.</p>
           <div style={{ marginTop: 26 }}>
-            <Link href="/app" className="btn">
-              Open the live tool
-            </Link>
+            <Link href="/app" className="btn">Open the live tool</Link>
           </div>
         </div>
       </section>
